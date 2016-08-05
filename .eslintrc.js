@@ -20,7 +20,7 @@ module.exports = {
         "no-trailing-spaces": 2,
         "no-unused-vars": 1,
         "no-use-before-define": [2, "nofunc"],
-        "object-curly-spacing": [2, "never"],
+        "object-curly-spacing": [2, "always"],
         "quotes": [2, "single", "avoid-escape"],
         "semi": [2, "always"],
         "keyword-spacing": [2, { "before": true, "after": true }],
