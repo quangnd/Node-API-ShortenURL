@@ -9,6 +9,7 @@ nunjucks.configure('views', {
     express: app
 });
 
+//We don't need use route here, but I created a new router for personal purpose.
 var mainRouter = require('./routes/mainRoutes')();
 app.use('/', mainRouter);
 
@@ -17,8 +18,11 @@ app.listen(port, function (err) {
 });
 
 
-//Basic algorithm
+//--BASIC algorithm
 //1. Create a MongoDB document with 3 field: originalURL, representNum, shortURL
 //2. Get url parameter, generate a random number between 1000 and 9999, then generate shortURL
-//3. Save to document
+//3. Save to MongoDB document
 //4. Find url by representNum and redirect to originalURL
+
+//--ADVANCED (not done)
+//Convert url string to integer and decode integer to original url
