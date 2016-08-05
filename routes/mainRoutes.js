@@ -12,7 +12,8 @@ var router = function () {
     mainRouter.route('/:url')
         .get(function (req, res) {
             var representNum = parseInt(req.params.url); //field type in MongoDB is integer
-            var dbUrl = 'mongodb://localhost:27017/shorturlAPI';
+            //var dbUrl = 'mongodb://localhost:27017/shorturlAPI';
+            var dbUrl = process.env.MONGOLAB_URI;
             mongodb.connect(dbUrl, function (err, db) {
                 if (err) {
                     console.log('Cannot connect to db');
@@ -44,7 +45,8 @@ var router = function () {
                 var representNum = commonFuncs.getRandomInt(1000, 9999);
                 var shortURL = commonFuncs.buildUrl(req.protocol, req.get('host'), representNum);
 
-                var dbUrl = 'mongodb://localhost:27017/shorturlAPI';
+                //var dbUrl = 'mongodb://localhost:27017/shorturlAPI';
+                var dbUrl = process.env.MONGOLAB_URI;
                 mongodb.connect(dbUrl, function (err, db) {
                     var collection = db.collection('websites');
                     var websiteData = {
