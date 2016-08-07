@@ -3,8 +3,8 @@ module.exports = {
         return Math.floor(Math.random() * (max - min + 1) + min);
     },
 
-    buildUrl: function (protocol, host, urlNumber) {
-        return protocol + '://' + host + '/' + urlNumber;
+    buildUrl: function (req) {
+        return req.protocol + '://' + req.get('host');
     },
 
     isUrlValid: function (userInput) {

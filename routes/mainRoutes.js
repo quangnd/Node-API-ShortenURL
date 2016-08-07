@@ -6,7 +6,7 @@ var commonFuncs = require('../utilities/commons');
 var router = function () {
     mainRouter.route('/')
         .get(function (req, res) {
-            res.render('index.html', { url: req.protocol + '://' + req.get('host') });
+            res.render('index.html', { url: commonFuncs.buildUrl(req) });
         });
 
     mainRouter.route('/:url')
