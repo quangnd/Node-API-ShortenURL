@@ -6,7 +6,7 @@ var commonFuncs = require('../utilities/commons');
 var router = function () {
     mainRouter.route('/')
         .get(function (req, res) {
-            res.render('index.html', { url: commonFuncs.buildUrl(req) });
+            res.render('index.html', { url: req.protocol + '://' + req.get('host') });
         });
 
     mainRouter.route('/:url')
@@ -41,12 +41,14 @@ var router = function () {
     mainRouter.route('/:url(*)')
         .get(function (req, res) {
             if (commonFuncs.isUrlValid(req.params.url)) {
+                console.log(req.params.url);
                 var originalURL = req.params.url;
                 var representNum = commonFuncs.getRandomInt(1000, 9999);
                 var shortURL = commonFuncs.buildUrl(req.protocol, req.get('host'), representNum);
 
                 //var dbUrl = 'mongodb://localhost:27017/shorturlAPI';
                 var dbUrl = process.env.MONGOLAB_URI;
+                console.log(dbUrl);
                 mongodb.connect(dbUrl, function (err, db) {
                     var collection = db.collection('websites');
                     var websiteData = {
