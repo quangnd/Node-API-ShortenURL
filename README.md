@@ -1,3 +1,5 @@
 # Node-API-ShortenURL
 
-Updating
+Demo API
+
+https://shortenurl-mun.herokuapp.com/
